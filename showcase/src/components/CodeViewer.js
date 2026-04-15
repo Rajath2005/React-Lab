@@ -22,7 +22,7 @@ const CodeViewer = ({ sourceFiles, selectedFileIndex, onSelectFile }) => {
       setError(null);
 
       try {
-        const response = await fetch(`/sources/${file.path}`);
+        const response = await fetch(`sources/${file.path}`);
         if (!response.ok) throw new Error('File not found');
         const content = await response.text();
         setFileContent(content);
