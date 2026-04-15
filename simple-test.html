@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>React 18 Simple Test</title>
+</head>
+<body>
+    <div id="root" style="font-size: 30px; text-align: center; padding: 50px;">Loading...</div>
+    
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    
+    <script>
+        console.log('React:', typeof window.React);
+        console.log('ReactDOM:', typeof window.ReactDOM);
+        
+        const React = window.React;
+        const ReactDOM = window.ReactDOM;
+        
+        // Create element without JSX
+        const app = React.createElement('div', null,
+            React.createElement('h1', null, 'Hello React 18!'),
+            React.createElement('p', null, 'This is a simple test.')
+        );
+        
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(app);
+    </script>
+</body>
+</html>

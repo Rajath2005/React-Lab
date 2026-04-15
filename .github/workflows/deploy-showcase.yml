@@ -1,0 +1,42 @@
+name: Deploy Showcase to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: showcase/package-lock.json
+
+      - name: Install dependencies
+        working-directory: showcase
+        run: npm install
+
+      - name: Build demos
+        working-directory: showcase
+        run: npm run build-demos
+
+      - name: Build React app with homepage
+        working-directory: showcase
+        run: npm run build
+        env:
+          PUBLIC_URL: /React-Lab
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./showcase/build
+          cname: 
+
