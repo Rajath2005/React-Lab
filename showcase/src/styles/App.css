@@ -76,6 +76,8 @@
   justify-content: center;
   -webkit-user-select: none;
   user-select: none;
+  overflow: hidden;
+  max-height: 120px;
 }
 
 .experiment-item:hover {
@@ -101,6 +103,9 @@
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: var(--spacing-xs);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .experiment-desc {
@@ -108,6 +113,10 @@
   color: var(--text-secondary);
   line-height: 1.4;
   margin-bottom: var(--spacing-sm);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .experiment-concepts {
@@ -123,6 +132,10 @@
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: 2px;
   font-size: var(--font-size-sm);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 /* ===== MAIN CONTENT ===== */
