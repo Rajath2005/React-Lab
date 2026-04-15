@@ -10,6 +10,7 @@ pre[class*='language-'] {
   line-height: 1.6 !important;
   border-radius: 4px !important;
   overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
   margin: 0 !important;
   padding: 16px !important;
   white-space: pre !important;
@@ -99,4 +100,25 @@ code[class*='language-'] {
 
 .token.namespace {
   opacity: 0.7;
+}
+
+/* Mobile-specific code viewer styles */
+@media (max-width: 768px) {
+  pre[class*='language-'] {
+    font-size: 12px !important;
+    padding: 12px !important;
+    border-radius: 3px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  pre[class*='language-'] {
+    font-size: 11px !important;
+    padding: 10px !important;
+    line-height: 1.5 !important;
+  }
+
+  code[class*='language-'] {
+    font-size: 11px !important;
+  }
 }

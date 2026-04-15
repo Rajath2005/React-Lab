@@ -30,6 +30,9 @@
   --transition-fast: 150ms ease-in-out;
   --transition-normal: 300ms ease-in-out;
   
+  /* Touch targets */
+  --touch-target-min: 44px;
+  
   /* Breakpoints */
   --mobile: 480px;
   --tablet: 768px;
@@ -55,6 +58,10 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
 }
 
 /* Scrollbar Styling */
