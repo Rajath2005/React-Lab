@@ -1,0 +1,5 @@
+{
+  "title": "Counter with Step Control",
+  "description": "Demonstrates multiple state variables and state manipulation with conditional logic. Learn how to manage multiple independent pieces of state and handle user interactions.",
+  "concepts": ["Multiple useState", "State Management", "Event Handling", "Conditional Logic"]
+}

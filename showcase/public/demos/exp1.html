@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Input Display - Live Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #root {
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        .App{
+  text-align: center;
+  margin-top: 50px;
+}
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.23.5/babel.min.js"></script>
+    
+    <script type="text/babel">
+        console.log('%c=== Text Input Display Demo Starting ===', 'color: green; font-size: 14px; font-weight: bold');
+        
+        // Simple synchronous React initialization
+        setTimeout(() => {
+            try {
+                console.log('Checking React availability...');
+                console.log('window.React:', typeof window.React);
+                console.log('window.ReactDOM:', typeof window.ReactDOM);
+                
+                if (!window.React) {
+                    throw new Error('React not loaded');
+                }
+                if (!window.ReactDOM) {
+                    throw new Error('ReactDOM not loaded');
+                }
+                if (!window.React.createElement) {
+                    throw new Error('React.createElement not available');
+                }
+                
+                const React = window.React;
+                const ReactDOM = window.ReactDOM;
+                const { useState, useEffect, useReducer, useContext, useRef, useCallback, useMemo } = React;
+                
+                console.log('✓ React loaded successfully');
+                console.log('Defining components...');
+                
+                
+                
+
+function App() {
+  const[text,setText]=useState();
+  const handleChange=(event)=>{
+    setText(event.target.value);
+    
+  }
+  return (
+    <div className="App">
+      <h3 style={{textAlign:'center',marginTop:'20px'}}>4VP23CS070</h3>
+      <h1>Hello VCET</h1>
+      <input type="text" value={text} onChange={handleChange} placeholder='Type Something..'></input>
+
+      <h1>{text || "Type Something..."}</h1>
+
+    </div>
+  );
+}
+
+
+                
+                console.log('✓ Components defined');
+                console.log('Rendering to DOM...');
+                
+                const rootElement = document.getElementById('root');
+                if (!rootElement) {
+                    throw new Error('Root element not found');
+                }
+                
+                try {
+                    // Try React 18 API first
+                    const root = ReactDOM.createRoot(rootElement);
+                    root.render(React.createElement(App));
+                } catch (e) {
+                    // Fallback to React 16/17 API
+                    console.log('Using legacy render method...');
+                    ReactDOM.render(React.createElement(App), rootElement);
+                }
+                
+                console.log('✓ App rendered successfully');
+            } catch (error) {
+                console.error('DEMO ERROR:', error);
+                const root = document.getElementById('root');
+                if (root) {
+                    root.innerHTML = '<div style="color: red; padding: 30px; font-family: monospace; font-size: 14px; line-height: 1.5;"><h2>Error:</h2><pre>' + (error.stack || error.message) + '</pre></div>';
+                }
+            }
+        }, 500); // Give React 500ms to load
+    </script>
+</body>
+</html>

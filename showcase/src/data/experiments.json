@@ -1,0 +1,136 @@
+[
+  {
+    "id": "exp1",
+    "number": 1,
+    "title": "Text Input Display",
+    "description": "Demonstrates React hooks (useState) with real-time text input/output binding. Learn how to manage component state and handle user input events.",
+    "concepts": [
+      "useState",
+      "Event Handling",
+      "Conditional Rendering"
+    ],
+    "sourceFiles": [
+      {
+        "filename": "App.js",
+        "path": "exp1/App.js",
+        "type": "component"
+      },
+      {
+        "filename": "App.css",
+        "path": "exp1/App.css",
+        "type": "style"
+      }
+    ]
+  },
+  {
+    "id": "exp2",
+    "number": 2,
+    "title": "Header-Footer Component Composition",
+    "description": "Illustrates breaking UI into reusable components and passing data via props. Master the fundamental pattern of component reusability and prop drilling.",
+    "concepts": [
+      "Props",
+      "Component Composition",
+      "Reusability",
+      "Data Flow"
+    ],
+    "sourceFiles": [
+      {
+        "filename": "App.js",
+        "path": "exp2/App.js",
+        "type": "component"
+      },
+      {
+        "filename": "App.css",
+        "path": "exp2/App.css",
+        "type": "style"
+      },
+      {
+        "filename": "Footer.js",
+        "path": "exp2/Footer.js",
+        "type": "component"
+      },
+      {
+        "filename": "Header.js",
+        "path": "exp2/Header.js",
+        "type": "component"
+      }
+    ]
+  },
+  {
+    "id": "exp3",
+    "number": 3,
+    "title": "Counter with Step Control",
+    "description": "Demonstrates multiple state variables and state manipulation with conditional logic. Learn how to manage multiple independent pieces of state and handle user interactions.",
+    "concepts": [
+      "Multiple useState",
+      "State Management",
+      "Event Handling",
+      "Conditional Logic"
+    ],
+    "sourceFiles": [
+      {
+        "filename": "App.js",
+        "path": "exp3/App.js",
+        "type": "component"
+      },
+      {
+        "filename": "App.css",
+        "path": "exp3/App.css",
+        "type": "style"
+      }
+    ]
+  },
+  {
+    "id": "exp4",
+    "number": 4,
+    "title": "Todo List Application",
+    "description": "Explore array state management, CRUD operations, and toggling item states. Master the pattern of managing lists of data with add, update, and delete operations.",
+    "concepts": [
+      "Array State",
+      "CRUD Operations",
+      "Item Toggling",
+      "List Management"
+    ],
+    "sourceFiles": [
+      {
+        "filename": "App.js",
+        "path": "exp4/App.js",
+        "type": "component"
+      },
+      {
+        "filename": "App.css",
+        "path": "exp4/App.css",
+        "type": "style"
+      }
+    ]
+  },
+  {
+    "id": "exp5",
+    "number": 5,
+    "title": "Image Gallery with Add/Remove",
+    "description": "Build a dynamic image gallery component with add and remove functionality. Learn child-parent communication patterns and managing complex nested component state.",
+    "concepts": [
+      "Nested Components",
+      "Child-Parent Communication",
+      "Dynamic Lists",
+      "Placeholder Images"
+    ],
+    "sourceFiles": [
+      {
+        "filename": "App.js",
+        "path": "exp5/App.js",
+        "type": "component"
+      },
+      {
+        "filename": "App.css",
+        "path": "exp5/App.css",
+        "type": "style"
+      },
+      {
+        "filename": "FigureList.js",
+        "path": "exp5/FigureList.js",
+        "type": "component"
+      }
+    ]
+  }
+]

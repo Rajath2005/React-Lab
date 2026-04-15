@@ -1,0 +1,5 @@
+{
+  "title": "Todo List Application",
+  "description": "Explore array state management, CRUD operations, and toggling item states. Master the pattern of managing lists of data with add, update, and delete operations.",
+  "concepts": ["Array State", "CRUD Operations", "Item Toggling", "List Management"]
+}

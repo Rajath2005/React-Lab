@@ -1,0 +1,5 @@
+{
+  "title": "Text Input Display",
+  "description": "Demonstrates React hooks (useState) with real-time text input/output binding. Learn how to manage component state and handle user input events.",
+  "concepts": ["useState", "Event Handling", "Conditional Rendering"]
+}

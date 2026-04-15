@@ -1,0 +1,102 @@
+@import './variables.css';
+
+/* Dracula Dark Theme Colors for Prism.js */
+pre[class*='language-'] {
+  background-color: #282a36 !important;
+  color: #f8f8f2 !important;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3) !important;
+  font-family: var(--font-family-mono) !important;
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+  border-radius: 4px !important;
+  overflow-x: auto !important;
+  margin: 0 !important;
+  padding: 16px !important;
+  white-space: pre !important;
+  word-spacing: normal !important;
+  word-break: normal !important;
+  word-wrap: normal !important;
+  hyphens: none !important;
+}
+
+code[class*='language-'] {
+  background-color: transparent !important;
+  color: inherit !important;
+  font-family: inherit !important;
+  text-shadow: inherit !important;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6272a4;
+}
+
+.token.punctuation {
+  color: #f8f8f2;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #ff79c6;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #f1fa8c;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #50fa7b;
+}
+
+.token.atrule,
+.token.attr-value {
+  color: #f1fa8c;
+}
+
+.token.keyword {
+  color: #ff79c6;
+}
+
+.token.function,
+.token.class-name {
+  color: #8be9fd;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #ffb86c;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.namespace {
+  opacity: 0.7;
+}

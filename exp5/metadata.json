@@ -1,0 +1,5 @@
+{
+  "title": "Image Gallery with Add/Remove",
+  "description": "Build a dynamic image gallery component with add and remove functionality. Learn child-parent communication patterns and managing complex nested component state.",
+  "concepts": ["Nested Components", "Child-Parent Communication", "Dynamic Lists", "Placeholder Images"]
+}

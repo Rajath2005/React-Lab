@@ -4,12 +4,35 @@ A comprehensive collection of React learning experiments demonstrating fundament
 
 ## 📋 Table of Contents
 
+- [🌐 View Interactive Showcase](#-view-interactive-showcase)
 - [Overview](#overview)
 - [Experiments](#experiments)
 - [Installation](#installation)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
 - [License](#license)
+
+## 🌐 View Interactive Showcase
+
+**👉 [Open React Lab Showcase](./showcase/)** - Interactive website showcasing all 5 experiments with side-by-side code viewer and live demos!
+
+Start here to see all experiments running live with syntax-highlighted source code. No need to clone - view everything directly in this gorgeous showcase interface!
+
+### Showcase Features:
+- ✨ **Live Demos** - Run all 5 experiments in the browser
+- 💻 **Code Viewer** - Syntax-highlighted source code with file selector
+- 📚 **Side-by-Side Layout** - Code on left, demo on right (50/50 split)
+- 🎯 **Educational Context** - Learning concepts and descriptions
+- 📱 **Responsive Design** - Works on desktop, tablet, and mobile
+- 🔗 **GitHub Integration** - Quick link to full repository
+
+**Quick Start:**
+```bash
+cd showcase
+npm install
+npm run build-demos
+npm start
+```
 
 ## 🎯 Overview
 

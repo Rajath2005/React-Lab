@@ -1,0 +1,5 @@
+{
+  "title": "Header-Footer Component Composition",
+  "description": "Illustrates breaking UI into reusable components and passing data via props. Master the fundamental pattern of component reusability and prop drilling.",
+  "concepts": ["Props", "Component Composition", "Reusability", "Data Flow"]
+}

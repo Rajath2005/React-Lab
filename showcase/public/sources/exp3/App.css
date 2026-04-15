@@ -1,0 +1,27 @@
+.App{
+  text-align: center;
+  font-family: Arial,sans-serif;
+}
+button{
+  padding:10px 20px;
+  color:slateblue;
+  background-color:pink;
+  margin:10px;
+  font-size: 1.2rem;
+}
+button:hover{
+  background-color: lightpink;
+  cursor: pointer;
+}
+input{
+  padding:8px;
+  margin: 10px;
+  width:60px;
+}
+h2{
+  text-align: center;
+  padding:10px;
+}
+.Counter-App{
+  margin-top: 10px;
+}
