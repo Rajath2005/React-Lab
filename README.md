@@ -10,7 +10,7 @@ A comprehensive collection of React learning experiments demonstrating fundament
 - [Installation](#installation)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
-- [Contributing](#-contributing)
+- [Contributing](#contributing)
 - [License](#license)
 
 ## 🌐 View Interactive Showcase
