@@ -10,6 +10,7 @@ A comprehensive collection of React learning experiments demonstrating fundament
 - [Installation](#installation)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
+- [Contributing](#-contributing)
 - [License](#license)
 
 ## 🌐 View Interactive Showcase
@@ -357,11 +358,11 @@ npm install
 
 ## 🤝 Contributing
 
-These are educational experiments. Feel free to:
-- Modify and extend the experiments
-- Add new features
-- Create variations
-- Submit improvements
+Contributions are welcome.
+
+Please read the contribution guide before opening issues or pull requests:
+
+- [contributing.md](./contributing.md)
 
 ## 📝 License
 
