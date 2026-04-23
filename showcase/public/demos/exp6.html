@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Form Validation & State Management - Live Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #root {
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        .App {
+font-family: Arial, sans-serif;
+max-width: 400px;
+margin: 50px auto;
+padding: 20px;
+border: 1px solid #ddd;
+border-radius: 10px;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+form > div {
+margin-bottom: 15px;
+}
+
+label {
+display: block;
+margin-bottom: 5px;
+font-weight: bold;
+}
+
+input {
+width: 100%;
+padding: 8px;
+box-sizing: border-box;
+}
+
+button {
+padding: 8px 12px;
+margin-top: 10px;
+cursor: pointer;
+}
+
+p {
+margin: 5px 0 0;
+}
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.23.5/babel.min.js"></script>
+    
+    <script type="text/babel">
+        console.log('%c=== Advanced Form Validation & State Management Demo Starting ===', 'color: green; font-size: 14px; font-weight: bold');
+        
+        // Simple synchronous React initialization
+        setTimeout(() => {
+            try {
+                console.log('Checking React availability...');
+                console.log('window.React:', typeof window.React);
+                console.log('window.ReactDOM:', typeof window.ReactDOM);
+                
+                if (!window.React) {
+                    throw new Error('React not loaded');
+                }
+                if (!window.ReactDOM) {
+                    throw new Error('ReactDOM not loaded');
+                }
+                if (!window.React.createElement) {
+                    throw new Error('React.createElement not available');
+                }
+                
+                const React = window.React;
+                const ReactDOM = window.ReactDOM;
+                const { useState, useEffect, useReducer, useContext, useRef, useCallback, useMemo } = React;
+                
+                console.log('✓ React loaded successfully');
+                console.log('Defining components...');
+                
+                
+// Form Component
+
+
+// State Management with useState
+const Form = () => {
+    const [formData, setFormData] = useState({ name: '', email: '', password: '' });
+    const [errors, setErrors] = useState({});
+    const [submittedData, setSubmittedData] = useState(null);
+    const [showPassword, setShowPassword] = useState(false);
+
+    // Handling Input Changes
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    // Toggle Password Visibility
+    const togglePassword = () => setShowPassword(prev => !prev);
+
+    // Form Validation
+    const validateForm = () => {
+        const newErrors = {};
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (!formData.name) newErrors.name = 'Name is required';
+        if (!formData.email) newErrors.email = 'Email is required';
+        else if (!emailPattern.test(formData.email)) newErrors.email = 'Invalid email format';
+        if (!formData.password) newErrors.password = 'Password is required';
+        else if (formData.password.length < 6) newErrors.password = 'Password must be at least 6 characters';
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    //Form Submission
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (validateForm()) {
+            setSubmittedData(formData);
+            console.log('Form data submitted:', formData);
+        }
+    };
+
+    //Reusable Input Rendering
+    const renderInput = (label, name, type = 'text') => (
+        <div>
+            <label htmlFor={name}>{label}:</label>
+            <input
+                type={name === 'password' ? (showPassword ? 'text' : 'password') : type}
+                id={name}
+                name={name}
+                value={formData[name]}
+                onChange={handleInputChange}
+                style={{ borderColor: errors[name] ? 'red' : 'black' }}
+            />
+            {name === 'password' && (
+                <button type="button" onClick={togglePassword}>
+                    {showPassword ? 'Hide Password' : 'Show Password'}
+                </button>
+            )}
+            {errors[name] && <p style={{ color: 'red' }}>{errors[name]}</p>}
+        </div>
+    );
+
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                {renderInput('Name', 'name')}
+                {renderInput('Email', 'email', 'email')}
+                {renderInput('Password', 'password')}
+                <button type="submit">Submit</button>
+            </form>
+
+            {submittedData && (
+                <div>
+                    <h3>Submitted Data:</h3>
+                    <p>Name: {submittedData.name}</p>
+                    <p>Email: {submittedData.email}</p>
+                    <p>Password: {submittedData.password}</p>
+                </div>
+            )}
+        </div>
+    );
+};
+
+
+
+                
+
+function App() {
+return (
+<div className="App">
+<h1>React Form Validation</h1>
+<Form />
+</div>
+);
+}
+
+                
+                console.log('✓ Components defined');
+                console.log('Rendering to DOM...');
+                
+                const rootElement = document.getElementById('root');
+                if (!rootElement) {
+                    throw new Error('Root element not found');
+                }
+                
+                try {
+                    // Try React 18 API first
+                    const root = ReactDOM.createRoot(rootElement);
+                    root.render(React.createElement(App));
+                } catch (e) {
+                    // Fallback to React 16/17 API
+                    console.log('Using legacy render method...');
+                    ReactDOM.render(React.createElement(App), rootElement);
+                }
+                
+                console.log('✓ App rendered successfully');
+            } catch (error) {
+                console.error('DEMO ERROR:', error);
+                const root = document.getElementById('root');
+                if (root) {
+                    root.innerHTML = '<div style="color: red; padding: 30px; font-family: monospace; font-size: 14px; line-height: 1.5;"><h2>Error:</h2><pre>' + (error.stack || error.message) + '</pre></div>';
+                }
+            }
+        }, 500); // Give React 500ms to load
+    </script>
+</body>
+</html>

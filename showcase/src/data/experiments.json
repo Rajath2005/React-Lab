@@ -132,5 +132,70 @@
         "type": "component"
       }
     ]
+  },
+  {
+    "id": "exp6",
+    "number": 6,
+    "title": "Advanced Form Validation & State Management",
+    "description": "Demonstrates comprehensive form handling with React hooks, including state management, real-time validation, error display, and password visibility toggle. Learn to build robust forms with user-friendly validation feedback.",
+    "concepts": [
+      "useState",
+      "Form Validation",
+      "Error Handling",
+      "Conditional Rendering",
+      "Form Events"
+    ],
+    "sourceFiles": [
+      {
+        "filename": "App.js",
+        "path": "exp6/App.js",
+        "type": "component"
+      },
+      {
+        "filename": "App.css",
+        "path": "exp6/App.css",
+        "type": "style"
+      },
+      {
+        "filename": "Form.js",
+        "path": "exp6/Form.js",
+        "type": "component"
+      }
+    ]
+  },
+  {
+    "id": "exp7",
+    "number": 7,
+    "title": "Profile Card with Hover Effects",
+    "description": "Demonstrates component composition with props, useState for handling hover interactions, and dynamic inline styling. Learn to build reusable card components with interactive state-based visual feedback.",
+    "concepts": [
+      "useState",
+      "Props",
+      "Inline Styles",
+      "Event Handling",
+      "Component Composition"
+    ],
+    "sourceFiles": [
+      {
+        "filename": "App.js",
+        "path": "exp7/App.js",
+        "type": "component"
+      },
+      {
+        "filename": "App.css",
+        "path": "exp7/App.css",
+        "type": "style"
+      },
+      {
+        "filename": "ProfileCard.css",
+        "path": "exp7/ProfileCard.css",
+        "type": "style"
+      },
+      {
+        "filename": "ProfileCard.js",
+        "path": "exp7/ProfileCard.js",
+        "type": "component"
+      }
+    ]
   }
 ]
