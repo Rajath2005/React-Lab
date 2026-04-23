@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experiment 9 - Live Demo</title>
+    <title>Multi-Page Navigation with React Router - Live Demo</title>
     <style>
         * {
             margin: 0;
@@ -29,32 +29,52 @@
         
         .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-.App-link {
-  color: #61dafb;
+nav {
+  background-color: #333;
+  padding: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  margin: 0 5px;
+  border-radius: 4px;
+  transition: background 0.3s;
+  font-weight: 500;
+}
+
+nav a:hover {
+  background-color: #667eea;
+}
+
+nav a.active {
+  background-color: #667eea;
+  text-decoration: underline;
+}
+
+h1, h2 {
+  color: white;
+  margin-top: 40px;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+p {
+  color: #f0f0f0;
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 20px auto;
 }
 
 @keyframes App-logo-spin {
@@ -76,7 +96,7 @@
     <script src="https://unpkg.com/@babel/standalone@7.23.5/babel.min.js"></script>
     
     <script type="text/babel">
-        console.log('%c=== Experiment 9 Demo Starting ===', 'color: green; font-size: 14px; font-weight: bold');
+        console.log('%c=== Multi-Page Navigation with React Router Demo Starting ===', 'color: green; font-size: 14px; font-weight: bold');
         
         // Simple synchronous React initialization
         setTimeout(() => {
@@ -107,7 +127,13 @@
 
 
 const About = () => {
-  return <h1>About Page</h1>;
+  return (
+    <div>
+      <h1>About Us</h1>
+      <p>Learn about React Router and how it enables client-side routing in single-page applications.</p>
+      <p>React Router allows you to build dynamic navigation without page reloads.</p>
+    </div>
+  );
 };
 
 
@@ -116,7 +142,13 @@ const About = () => {
 
 
 const Contact = () => {
-  return <h1>Contact Page</h1>;
+  return (
+    <div>
+      <h1>Contact Us</h1>
+      <p>Get in touch with us through any of our contact methods.</p>
+      <p>We're here to help and answer any questions about React and web development.</p>
+    </div>
+  );
 };
 
 
@@ -125,7 +157,13 @@ const Contact = () => {
 
 
 const Home = () => {
-  return <h1>Home Page</h1>;
+  return (
+    <div>
+      <h1>Welcome to React Router</h1>
+      <p>This is a multi-page application built with React Router v6.</p>
+      <p>Navigate using the links above to explore different pages.</p>
+    </div>
+  );
 };
 
 

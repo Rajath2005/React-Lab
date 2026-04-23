@@ -231,9 +231,15 @@
   {
     "id": "exp9",
     "number": 9,
-    "title": "Experiment 9",
-    "description": "React lab experiment",
-    "concepts": [],
+    "title": "Multi-Page Navigation with React Router",
+    "description": "Build a multi-page application using React Router v6. Learn client-side routing, navigation between pages, and managing different components for different routes.",
+    "concepts": [
+      "React Router",
+      "Routes",
+      "Navigation",
+      "SPA",
+      "Component Pages"
+    ],
     "sourceFiles": [
       {
         "filename": "App.js",
@@ -270,9 +276,15 @@
   {
     "id": "exp10",
     "number": 10,
-    "title": "Experiment 10",
-    "description": "React lab experiment",
-    "concepts": [],
+    "title": "API Data Fetching & Search Filtering",
+    "description": "Fetch data from an API using class components and lifecycle methods. Learn state management with componentDidMount, componentDidUpdate, filtering, and searching through large datasets.",
+    "concepts": [
+      "API Fetching",
+      "Class Components",
+      "Lifecycle Methods",
+      "Search Filter",
+      "State Management"
+    ],
     "sourceFiles": [
       {
         "filename": "App.js",

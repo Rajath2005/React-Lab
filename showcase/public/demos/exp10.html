@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experiment 10 - Live Demo</title>
+    <title>API Data Fetching & Search Filtering - Live Demo</title>
     <style>
         * {
             margin: 0;
@@ -29,32 +29,59 @@
         
         .App {
   text-align: center;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h2 {
+  color: #333;
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input[type="text"] {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+input[type="text"]:focus {
+  outline: none;
+  border-color: #61dafb;
+  box-shadow: 0 0 5px #61dafb;
 }
 
-.App-link {
-  color: #61dafb;
+ul {
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+li {
+  background: #f5f5f5;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 4px;
+  text-align: left;
+  border-left: 4px solid #61dafb;
+  transition: transform 0.2s;
+}
+
+li:hover {
+  transform: translateX(10px);
+  background: #eeeeee;
+}
+
+p {
+  color: #666;
+  font-size: 16px;
 }
 
 @keyframes App-logo-spin {
@@ -76,7 +103,7 @@
     <script src="https://unpkg.com/@babel/standalone@7.23.5/babel.min.js"></script>
     
     <script type="text/babel">
-        console.log('%c=== Experiment 10 Demo Starting ===', 'color: green; font-size: 14px; font-weight: bold');
+        console.log('%c=== API Data Fetching & Search Filtering Demo Starting ===', 'color: green; font-size: 14px; font-weight: bold');
         
         // Simple synchronous React initialization
         setTimeout(() => {
@@ -192,26 +219,13 @@ class ApiDataFetcher extends Component {
 
                 
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ApiDataFetcher />
     </div>
   );
-}
+};
 
 
                 
