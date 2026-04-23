@@ -1,0 +1,5 @@
+{
+  "title": "API Data Fetching & Search Filtering",
+  "description": "Fetch data from an API using class components and lifecycle methods. Learn state management with componentDidMount, componentDidUpdate, filtering, and searching through large datasets.",
+  "concepts": ["API Fetching", "Class Components", "Lifecycle Methods", "Search Filter", "State Management"]
+}

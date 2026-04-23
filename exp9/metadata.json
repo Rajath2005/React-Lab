@@ -1,0 +1,5 @@
+{
+  "title": "Multi-Page Navigation with React Router",
+  "description": "Build a multi-page application using React Router v6. Learn client-side routing, navigation between pages, and managing different components for different routes.",
+  "concepts": ["React Router", "Routes", "Navigation", "SPA", "Component Pages"]
+}
