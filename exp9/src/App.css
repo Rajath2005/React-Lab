@@ -14,21 +14,24 @@ nav {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-nav a {
+nav button {
   color: white;
-  text-decoration: none;
+  background: none;
+  border: none;
   padding: 8px 15px;
   margin: 0 5px;
   border-radius: 4px;
-  transition: background 0.3s;
+  font-size: 16px;
   font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-nav a:hover {
+nav button:hover {
   background-color: #667eea;
 }
 
-nav a.active {
+nav button.active {
   background-color: #667eea;
   text-decoration: underline;
 }
