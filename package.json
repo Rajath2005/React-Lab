@@ -1,0 +1,9 @@
+{
+  "name": "react-lab",
+  "version": "1.0.0",
+  "description": "Interactive React Learning Lab with Experiments",
+  "scripts": {
+    "auto-push": "node auto-push.js",
+    "dev": "echo 'Run npm start in individual exp folders or showcase folder'"
+  }
+}
