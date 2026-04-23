@@ -1,10 +1,13 @@
 import React from "react";
 import Reminder from "./Reminder";
-function App() {
+import './App.css'
+
+const App = () => {
   return (
     <div>
       <Reminder />
     </div>
   );
-}
+};
+
 export default App;
