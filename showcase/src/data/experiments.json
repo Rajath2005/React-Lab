@@ -227,5 +227,68 @@
         "type": "component"
       }
     ]
+  },
+  {
+    "id": "exp9",
+    "number": 9,
+    "title": "Experiment 9",
+    "description": "React lab experiment",
+    "concepts": [],
+    "sourceFiles": [
+      {
+        "filename": "App.js",
+        "path": "exp9/App.js",
+        "type": "component"
+      },
+      {
+        "filename": "About.js",
+        "path": "exp9/About.js",
+        "type": "component"
+      },
+      {
+        "filename": "App.css",
+        "path": "exp9/App.css",
+        "type": "style"
+      },
+      {
+        "filename": "Contact.js",
+        "path": "exp9/Contact.js",
+        "type": "component"
+      },
+      {
+        "filename": "Home.js",
+        "path": "exp9/Home.js",
+        "type": "component"
+      },
+      {
+        "filename": "Navbar.js",
+        "path": "exp9/Navbar.js",
+        "type": "component"
+      }
+    ]
+  },
+  {
+    "id": "exp10",
+    "number": 10,
+    "title": "Experiment 10",
+    "description": "React lab experiment",
+    "concepts": [],
+    "sourceFiles": [
+      {
+        "filename": "App.js",
+        "path": "exp10/App.js",
+        "type": "component"
+      },
+      {
+        "filename": "ApiDataFetcher.js",
+        "path": "exp10/ApiDataFetcher.js",
+        "type": "component"
+      },
+      {
+        "filename": "App.css",
+        "path": "exp10/App.css",
+        "type": "style"
+      }
+    ]
   }
 ]

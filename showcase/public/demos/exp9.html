@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Reminder with Filtering - Live Demo</title>
+    <title>Experiment 9 - Live Demo</title>
     <style>
         * {
             margin: 0;
@@ -27,41 +27,45 @@
             max-width: 100%;
         }
         
-        body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  padding: 20px;
+        .App {
+  text-align: center;
 }
 
-div {
-  max-width: 500px;
-  margin: auto;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
-input, textarea, select, button {
-  width: 100%;
-  margin: 10px 0;
-  padding: 8px;
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
-button {
-  cursor: pointer;
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+.App-link {
+  color: #61dafb;
 }
 
-li {
-  background: #eee;
-  margin: 5px 0;
-  padding: 10px;
-  border-radius: 5px;
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
+
     </style>
 </head>
 <body>
@@ -72,7 +76,7 @@ li {
     <script src="https://unpkg.com/@babel/standalone@7.23.5/babel.min.js"></script>
     
     <script type="text/babel">
-        console.log('%c=== Task Reminder with Filtering Demo Starting ===', 'color: green; font-size: 14px; font-weight: bold');
+        console.log('%c=== Experiment 9 Demo Starting ===', 'color: green; font-size: 14px; font-weight: bold');
         
         // Simple synchronous React initialization
         setTimeout(() => {
@@ -99,86 +103,44 @@ li {
                 console.log('Defining components...');
                 
                 
-// Reminder Component
+// About Component
+
+
+const About = () => {
+  return <h1>About Page</h1>;
+};
 
 
 
+// Contact Component
 
-const Reminder = () => {
-  const [tasks, setTasks] = useState([]);
-  const [task, setTask] = useState({ name: "", due: "", desc: "" });
-  const [filter, setFilter] = useState("all");
 
-  // Add Task
-  const addTask = () => {
-    if (!task.name || !task.due) return;
+const Contact = () => {
+  return <h1>Contact Page</h1>;
+};
 
-    setTasks([
-      ...tasks,
-      { ...task, id: Date.now(), completed: false }
-    ]);
 
-    setTask({ name: "", due: "", desc: "" });
-  };
 
-  // Toggle Complete
-  const toggleCompletion = (id) => {
-    setTasks(
-      tasks.map(t =>
-        t.id === id ? { ...t, completed: !t.completed } : t
-      )
-    );
-  };
+// Home Component
 
-  // Filter
-  const filteredTasks = tasks.filter(t => {
-    if (filter === "completed") return t.completed;
-    if (filter === "pending") return !t.completed;
-    return true;
-  });
 
+const Home = () => {
+  return <h1>Home Page</h1>;
+};
+
+
+
+// Navbar Component
+
+
+
+const Navbar = () => {
   return (
-    <div>
-      <h2>Add Task</h2>
-
-      <input
-        placeholder="Task Name"
-        value={task.name}
-        onChange={e => setTask({ ...task, name: e.target.value })}
-      />
-
-      <input
-        type="date"
-        value={task.due}
-        onChange={e => setTask({ ...task, due: e.target.value })}
-      />
-
-      <textarea
-        placeholder="Description"
-        value={task.desc}
-        onChange={e => setTask({ ...task, desc: e.target.value })}
-      />
-
-      <button onClick={addTask}>Add Task</button>
-
-      <h3>Filter</h3>
-      <select onChange={e => setFilter(e.target.value)}>
-        <option value="all">All</option>
-        <option value="completed">Completed</option>
-        <option value="pending">Pending</option>
-      </select>
-
-      <ul>
-        {filteredTasks.map(t => (
-          <li key={t.id}>
-            <strong>{t.name}</strong> ({t.due})
-            <button onClick={() => toggleCompletion(t.id)}>
-              {t.completed ? "Pending" : "Completed"}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <nav>
+      <NavLink to="/">Home</NavLink> |{" "}
+      <NavLink to="/about">About</NavLink> |{" "}
+      <NavLink to="/contact">Contact</NavLink>
+    </nav>
   );
 };
 
@@ -188,9 +150,16 @@ const Reminder = () => {
 
 const App = () => {
   return (
-    <div>
-      <Reminder />
-    </div>
+    <Router>
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+
+    </Router>
   );
 };
 
