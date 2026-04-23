@@ -1,0 +1,5 @@
+{
+  "title": "Profile Card with Hover Effects",
+  "description": "Demonstrates component composition with props, useState for handling hover interactions, and dynamic inline styling. Learn to build reusable card components with interactive state-based visual feedback.",
+  "concepts": ["useState", "Props", "Inline Styles", "Event Handling", "Component Composition"]
+}
