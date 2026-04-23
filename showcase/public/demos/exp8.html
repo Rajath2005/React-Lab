@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Card with Hover Effects - Live Demo</title>
+    <title>Task Reminder with Filtering - Live Demo</title>
     <style>
         * {
             margin: 0;
@@ -76,7 +76,7 @@
     <script src="https://unpkg.com/@babel/standalone@7.23.5/babel.min.js"></script>
     
     <script type="text/babel">
-        console.log('%c=== Profile Card with Hover Effects Demo Starting ===', 'color: green; font-size: 14px; font-weight: bold');
+        console.log('%c=== Task Reminder with Filtering Demo Starting ===', 'color: green; font-size: 14px; font-weight: bold');
         
         // Simple synchronous React initialization
         setTimeout(() => {
@@ -103,45 +103,63 @@
                 console.log('Defining components...');
                 
                 
-// ProfileCard Component
+// Reminder Component
 
 
-const ProfileCard = ({ name, bio, profilePicture, backgroundColor }) => {
 
-    const [isHovered, setIsHovered] = useState(false);
+function Reminder() {
+    const [tasks, setTasks] = useState([]);
+    const [task, setTask] = useState({ name: "", due: "", desc: "" });
+    const [filter, setFilter] = useState("all");
+
+    const addTask = () => {
+        if (!task.name || !task.due) return;
+        setTasks([...tasks, { ...task, id: Date.now(), completed: false }]);
+        setTask({ name: "", due: "", desc: "" });
+    };
+
+    const toggleCompletion = (id) => {
+        setTasks(tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
+    };
+
+    const filteredTasks = tasks.filter(t =>
+        filter === "all" ? true : filter === "completed" ? t.completed : !t.completed
+    );
 
     return (
-        <div
-            style={{
-                backgroundColor: isHovered ? "#e0e0e0" : backgroundColor,
-                textAlign: "center",
-                padding: "20px",
-                borderRadius: "10px",
-                width: "250px",
-                margin: "auto",
-                boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-            }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-        >
+        <div className="container">
+            <h2>Add New Task</h2>
+            <input placeholder="Task Name" value={task.name} onChange={e => setTask({ ...task, name: e.target.value })} />
+            <input type="date" value={task.due} onChange={e => setTask({ ...task, due: e.target.value })} />
+            <textarea placeholder="Description (optional)" value={task.desc} onChange={e => setTask({ ...task, desc: e.target.value })} />
+            <button onClick={addTask}>Add Task</button>
 
-            <img
-                src={profilePicture}
-                alt="Profile"
-                style={{
-                    width: "120px",
-                    height: "120px",
-                    borderRadius: "50%"
-                }}
-            />
+            <h3>Filter</h3>
+            <select value={filter} onChange={e => setFilter(e.target.value)}>
+                <option value="all">All Tasks</option>
+                <option value="completed">Completed Tasks</option>
+                <option value="pending">Pending Tasks</option>
+            </select>
 
-            <h2>{name}</h2>
-            <p>{bio}</p>
-
+            <ul>
+                {filteredTasks.map(t => (
+                    <li key={t.id} className={`task-item ${t.completed ? "completed" : "pending"}`}>
+                        <div className="task-header">
+                            <strong>{t.name}</strong>
+                            <button onClick={() => toggleCompletion(t.id)}>
+                                {t.completed ? "Mark as Pending" : "Mark as Completed"}
+                            </button>
+                        </div>
+                        <div><strong>Due:</strong> {t.due}</div>
+                        {t.desc && <div><strong>Note:</strong> {t.desc}</div>}
+                        <div className="status-label">Status: {t.completed ? "Completed" : "Pending"}</div>
+                    </li>
+                ))}
+                {filteredTasks.length === 0 && <p className="no-tasks">No tasks to display</p>}
+            </ul>
         </div>
     );
-};
-
+}
 
 
                 
@@ -149,18 +167,10 @@ const ProfileCard = ({ name, bio, profilePicture, backgroundColor }) => {
 function App() {
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>User Profile</h1>
-
-      <ProfileCard
-        name="John Doe"
-        bio="A passionate developer with a love for learning and coding."
-        profilePicture="https://img.freepik.com/free-photo/closeup-shot-beautiful-butterfly-with-interesting-textures-orange-petaled-flower_181624-7640.jpg?semt=ais_hybrid&w=740&q=80"
-        backgroundColor="pink"
-      />
+      <Reminder />
     </div>
   );
 }
-
 
                 
                 console.log('✓ Components defined');

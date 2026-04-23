@@ -1,36 +1,37 @@
-import React, { useState } from 'react';
-import './ProfileCard.css';
+import React, { useState } from "react";
 
 const ProfileCard = ({ name, bio, profilePicture, backgroundColor }) => {
 
-    const inlineStyles = {
-        backgroundColor: backgroundColor || '#f0f0f0',
-        textAlign: 'center',
-        padding: '20px',
-        borderRadius: '8px',
-        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-        transition: 'background-color 0.3s ease',
-    };
-
     const [isHovered, setIsHovered] = useState(false);
-
-    const hoverStyles = {
-        backgroundColor: isHovered ? '#e0e0e0' : inlineStyles.backgroundColor,
-    };
-
-    const handleMouseEnter = () => setIsHovered(true);
-    const handleMouseLeave = () => setIsHovered(false);
 
     return (
         <div
-            className="profile-card"
-            style={{ ...inlineStyles, ...hoverStyles }}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            style={{
+                backgroundColor: isHovered ? "#e0e0e0" : backgroundColor,
+                textAlign: "center",
+                padding: "20px",
+                borderRadius: "10px",
+                width: "250px",
+                margin: "auto",
+                boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+            }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
         >
-            <img src={profilePicture} alt="Profile" className="profile-image" />
+
+            <img
+                src={profilePicture}
+                alt="Profile"
+                style={{
+                    width: "120px",
+                    height: "120px",
+                    borderRadius: "50%"
+                }}
+            />
+
             <h2>{name}</h2>
             <p>{bio}</p>
+
         </div>
     );
 };
