@@ -1,0 +1,5 @@
+{
+  "title": "Advanced Form Validation & State Management",
+  "description": "Demonstrates comprehensive form handling with React hooks, including state management, real-time validation, error display, and password visibility toggle. Learn to build robust forms with user-friendly validation feedback.",
+  "concepts": ["useState", "Form Validation", "Error Handling", "Conditional Rendering", "Form Events"]
+}
