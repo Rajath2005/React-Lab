@@ -1,0 +1,5 @@
+{
+  "title": "Task Reminder with Filtering",
+  "description": "Build a task management system with add, filter, and completion tracking functionality. Demonstrates complex state management, array operations, conditional rendering, and filter logic in React.",
+  "concepts": ["useState", "Array Methods", "Filtering", "Complex State", "Input Handling"]
+}
