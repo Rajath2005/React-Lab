@@ -11,7 +11,7 @@ const DemoFrame = ({ experiment }) => {
     );
   }
 
-  const demoSrc = `demos/${experiment.id}.html`;
+  const demoSrc = `${process.env.PUBLIC_URL}/demos/${experiment.id}.html`;
 
   return (
     <div className="demo-panel">

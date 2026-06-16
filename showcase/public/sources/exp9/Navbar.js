@@ -1,12 +1,28 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ currentPage, setPage }) => {
   return (
     <nav>
-      <NavLink to="/">Home</NavLink> |{" "}
-      <NavLink to="/about">About</NavLink> |{" "}
-      <NavLink to="/contact">Contact</NavLink>
+      <button 
+        className={currentPage === "home" ? "active" : ""}
+        onClick={() => setPage("home")}
+      >
+        Home
+      </button>
+      {" | "}
+      <button 
+        className={currentPage === "about" ? "active" : ""}
+        onClick={() => setPage("about")}
+      >
+        About
+      </button>
+      {" | "}
+      <button 
+        className={currentPage === "contact" ? "active" : ""}
+        onClick={() => setPage("contact")}
+      >
+        Contact
+      </button>
     </nav>
   );
 };

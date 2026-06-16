@@ -185,13 +185,25 @@ function generateDemoHTML(expFolder, expId, experiment) {
 
   // Read App.css
   const appCssPath = path.join(srcDir, 'App.css');
-  const appCssContent = readFile(appCssPath);
+  let appCssContent = readFile(appCssPath) || '';
+
+  // Look for any other .css files
+  const files = fs.readdirSync(srcDir);
+  const cssFiles = files.filter(f => 
+    f.endsWith('.css') && 
+    f !== 'App.css' && 
+    f !== 'index.css'
+  );
+  
+  cssFiles.forEach(cssFile => {
+    let cssContent = readFile(path.join(srcDir, cssFile)) || '';
+    appCssContent += `\n/* ${cssFile} */\n${cssContent}\n`;
+  });
 
   // Read component files dynamically
   let componentsCode = '';
   
   // Look for any .js files that aren't App.js
-  const files = fs.readdirSync(srcDir);
   const componentFiles = files.filter(f => 
     f.endsWith('.js') && 
     f !== 'App.js' && 
@@ -270,7 +282,7 @@ function generateDemoHTML(expFolder, expId, experiment) {
                 
                 const React = window.React;
                 const ReactDOM = window.ReactDOM;
-                const { useState, useEffect, useReducer, useContext, useRef, useCallback, useMemo } = React;
+                const { useState, useEffect, useReducer, useContext, useRef, useCallback, useMemo, Component } = React;
                 
                 console.log('✓ React loaded successfully');
                 console.log('Defining components...');
