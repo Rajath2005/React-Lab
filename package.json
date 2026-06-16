@@ -5,5 +5,8 @@
   "scripts": {
     "auto-push": "node auto-push.js",
     "dev": "echo 'Run npm start in individual exp folders or showcase folder'"
+  },
+  "devDependencies": {
+    "adm-zip": "^0.5.17"
   }
 }

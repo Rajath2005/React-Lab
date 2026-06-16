@@ -1,0 +1,62 @@
+{
+  "exp1": {
+    "name": "Text Input Display",
+    "description": "Demonstrates React hooks (useState) with real-time text input/output binding. Learn how to manage component state and handle user input events.",
+    "version": "1.0.0",
+    "downloadUrl": "https://github.com/Rajath2005/React-Lab/releases/latest/download/exp1.zip"
+  },
+  "exp10": {
+    "name": "API Data Fetching & Search Filtering",
+    "description": "Fetch data from an API using class components and lifecycle methods. Learn state management with componentDidMount, componentDidUpdate, filtering, and searching through large datasets.",
+    "version": "1.0.0",
+    "downloadUrl": "https://github.com/Rajath2005/React-Lab/releases/latest/download/exp10.zip"
+  },
+  "exp2": {
+    "name": "Header-Footer Component Composition",
+    "description": "Illustrates breaking UI into reusable components and passing data via props. Master the fundamental pattern of component reusability and prop drilling.",
+    "version": "1.0.0",
+    "downloadUrl": "https://github.com/Rajath2005/React-Lab/releases/latest/download/exp2.zip"
+  },
+  "exp3": {
+    "name": "Counter with Step Control",
+    "description": "Demonstrates multiple state variables and state manipulation with conditional logic. Learn how to manage multiple independent pieces of state and handle user interactions.",
+    "version": "1.0.0",
+    "downloadUrl": "https://github.com/Rajath2005/React-Lab/releases/latest/download/exp3.zip"
+  },
+  "exp4": {
+    "name": "Todo List Application",
+    "description": "Explore array state management, CRUD operations, and toggling item states. Master the pattern of managing lists of data with add, update, and delete operations.",
+    "version": "1.0.0",
+    "downloadUrl": "https://github.com/Rajath2005/React-Lab/releases/latest/download/exp4.zip"
+  },
+  "exp5": {
+    "name": "Image Gallery with Add/Remove",
+    "description": "Build a dynamic image gallery component with add and remove functionality. Learn child-parent communication patterns and managing complex nested component state.",
+    "version": "1.0.0",
+    "downloadUrl": "https://github.com/Rajath2005/React-Lab/releases/latest/download/exp5.zip"
+  },
+  "exp6": {
+    "name": "Advanced Form Validation & State Management",
+    "description": "Demonstrates comprehensive form handling with React hooks, including state management, real-time validation, error display, and password visibility toggle. Learn to build robust forms with user-friendly validation feedback.",
+    "version": "1.0.0",
+    "downloadUrl": "https://github.com/Rajath2005/React-Lab/releases/latest/download/exp6.zip"
+  },
+  "exp7": {
+    "name": "Profile Card with Hover Effects",
+    "description": "Demonstrates component composition with props, useState for handling hover interactions, and dynamic inline styling. Learn to build reusable card components with interactive state-based visual feedback.",
+    "version": "1.0.0",
+    "downloadUrl": "https://github.com/Rajath2005/React-Lab/releases/latest/download/exp7.zip"
+  },
+  "exp8": {
+    "name": "Task Reminder with Filtering",
+    "description": "Build a task management system with add, filter, and completion tracking functionality. Demonstrates complex state management, array operations, conditional rendering, and filter logic in React.",
+    "version": "1.0.0",
+    "downloadUrl": "https://github.com/Rajath2005/React-Lab/releases/latest/download/exp8.zip"
+  },
+  "exp9": {
+    "name": "Multi-Page Navigation with React Router",
+    "description": "Build a multi-page application using React Router v6. Learn client-side routing, navigation between pages, and managing different components for different routes.",
+    "version": "1.0.0",
+    "downloadUrl": "https://github.com/Rajath2005/React-Lab/releases/latest/download/exp9.zip"
+  }
+}
