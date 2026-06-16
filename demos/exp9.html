@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Counter with Step Control - Live Demo</title>
+    <title>Multi-Page Navigation with React Router - Live Demo</title>
     <style>
         * {
             margin: 0;
@@ -27,34 +27,59 @@
             max-width: 100%;
         }
         
-        .App{
+        .App {
   text-align: center;
-  font-family: Arial,sans-serif;
-}
-button{
-  padding:10px 20px;
-  color:slateblue;
-  background-color:pink;
-  margin:10px;
-  font-size: 1.2rem;
-}
-button:hover{
-  background-color: lightpink;
-  cursor: pointer;
-}
-input{
-  padding:8px;
-  margin: 10px;
-  width:60px;
-}
-h2{
-  text-align: center;
-  padding:10px;
-}
-.Counter-App{
-  margin-top: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  min-height: 100vh;
+  background-color: #ffffff;
 }
 
+nav {
+  background-color: #f8f9fa;
+  padding: 15px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+nav button {
+  color: #495057;
+  background: none;
+  border: none;
+  padding: 8px 15px;
+  margin: 0 5px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+nav button:hover {
+  background-color: #e9ecef;
+  color: #212529;
+}
+
+nav button.active {
+  background-color: #0d6efd;
+  color: white;
+}
+
+h1,
+h2 {
+  color: #212529;
+  margin-top: 40px;
+  font-size: 2.5rem;
+}
+
+p {
+  color: #495057;
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 20px auto;
+}
     </style>
 </head>
 <body>
@@ -65,7 +90,7 @@ h2{
     <script src="https://unpkg.com/@babel/standalone@7.23.5/babel.min.js"></script>
     
     <script type="text/babel">
-        console.log('%c=== Counter with Step Control Demo Starting ===', 'color: green; font-size: 14px; font-weight: bold');
+        console.log('%c=== Multi-Page Navigation with React Router Demo Starting ===', 'color: green; font-size: 14px; font-weight: bold');
         
         // Simple synchronous React initialization
         setTimeout(() => {
@@ -92,49 +117,108 @@ h2{
                 console.log('Defining components...');
                 
                 
-                
+// About Component
 
-function App() {
-  const [counter, SetCounter] = useState(0);
-  const [step, SetStep] = useState(1);
-  const minvalue = 0;
 
-  const increment = () => {
-    SetCounter(counter + step);
-  }
-  const decerement = () => {
-    if (counter - step > minvalue) {
-      SetCounter(counter - step);
-    }
-  }
-  const reset = () => {
-    SetCounter(0);
-  }
-  const handleChange = (event) => {
-    const value = Number(event.target.value);
-    SetStep(value);
-  }
+const About = () => {
   return (
-    <div className="App">
-      <h1>Counter Application</h1>
-      <div className='Counter-App'>
-        <h2>{counter}</h2>
-        <div className='Controls'>
-          <button onClick={increment}>Increase</button>
-          <button onClick={decerement}>Decrease</button>
-          <button onClick={reset}>Reset</button>
-          <div className='step-counter'>
-            <label>
-              Step:
-              <input type="number" value={step} onChange={handleChange}></input>
-            </label>
-          </div>
-        </div>
-      </div>
-
+    <div>
+      <h1>About Us</h1>
+      <p>Learn about React Router and how it enables client-side routing in single-page applications.</p>
+      <p>React Router allows you to build dynamic navigation without page reloads.</p>
     </div>
   );
-}
+};
+
+
+
+// Contact Component
+
+
+const Contact = () => {
+  return (
+    <div>
+      <h1>Contact Us</h1>
+      <p>Get in touch with us through any of our contact methods.</p>
+      <p>We're here to help and answer any questions about React and web development.</p>
+    </div>
+  );
+};
+
+
+
+// Home Component
+
+
+const Home = () => {
+  return (
+    <div>
+      <h1>Welcome to React Router</h1>
+      <p>This is a multi-page application built with React Router v6.</p>
+      <p>Navigate using the links above to explore different pages.</p>
+    </div>
+  );
+};
+
+
+
+// Navbar Component
+
+
+const Navbar = ({ currentPage, setPage }) => {
+  return (
+    <nav>
+      <button 
+        className={currentPage === "home" ? "active" : ""}
+        onClick={() => setPage("home")}
+      >
+        Home
+      </button>
+      {" | "}
+      <button 
+        className={currentPage === "about" ? "active" : ""}
+        onClick={() => setPage("about")}
+      >
+        About
+      </button>
+      {" | "}
+      <button 
+        className={currentPage === "contact" ? "active" : ""}
+        onClick={() => setPage("contact")}
+      >
+        Contact
+      </button>
+    </nav>
+  );
+};
+
+
+
+                
+
+const App = () => {
+  const [page, setPage] = useState("home");
+
+  const renderPage = () => {
+    switch (page) {
+      case "home":
+        return <Home />;
+      case "about":
+        return <About />;
+      case "contact":
+        return <Contact />;
+      default:
+        return <Home />;
+    }
+  };
+
+  return (
+    <div className="App">
+      <Navbar currentPage={page} setPage={setPage} />
+      {renderPage()}
+    </div>
+  );
+};
 
 
                 

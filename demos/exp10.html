@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Data Fetching & Search Filtering - Live Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #root {
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        .App {
+  text-align: center;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #61dafb;
+  box-shadow: 0 0 5px #61dafb;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+li {
+  background: #f5f5f5;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 4px;
+  text-align: left;
+  border-left: 4px solid #61dafb;
+  transition: transform 0.2s;
+}
+
+li:hover {
+  transform: translateX(10px);
+  background: #eeeeee;
+}
+
+p {
+  color: #666;
+  font-size: 16px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.23.5/babel.min.js"></script>
+    
+    <script type="text/babel">
+        console.log('%c=== API Data Fetching & Search Filtering Demo Starting ===', 'color: green; font-size: 14px; font-weight: bold');
+        
+        // Simple synchronous React initialization
+        setTimeout(() => {
+            try {
+                console.log('Checking React availability...');
+                console.log('window.React:', typeof window.React);
+                console.log('window.ReactDOM:', typeof window.ReactDOM);
+                
+                if (!window.React) {
+                    throw new Error('React not loaded');
+                }
+                if (!window.ReactDOM) {
+                    throw new Error('ReactDOM not loaded');
+                }
+                if (!window.React.createElement) {
+                    throw new Error('React.createElement not available');
+                }
+                
+                const React = window.React;
+                const ReactDOM = window.ReactDOM;
+                const { useState, useEffect, useReducer, useContext, useRef, useCallback, useMemo, Component } = React;
+                
+                console.log('✓ React loaded successfully');
+                console.log('Defining components...');
+                
+                
+// ApiDataFetcher Component
+
+
+class ApiDataFetcher extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [],
+            filteredData: [],
+            loading: true,
+            error: null,
+            searchQuery: '',
+        };
+    }
+
+    // 1️⃣ Runs when component loads
+    componentDidMount() {
+        this.fetchData();
+    }
+
+    // 2️⃣ Fetch API
+    fetchData = () => {
+        this.setState({ loading: true });
+
+        fetch('https://jsonplaceholder.typicode.com/posts')
+            .then(res => res.json())
+            .then(data => {
+                this.setState({
+                    data: data,
+                    filteredData: data,
+                    loading: false
+                });
+            })
+            .catch(() => {
+                this.setState({
+                    error: 'Error fetching data',
+                    loading: false
+                });
+            });
+    };
+
+    // 3️⃣ Runs when searchQuery changes
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.searchQuery !== this.state.searchQuery) {
+            this.filterData();
+        }
+    }
+
+    // 4️⃣ Filter logic
+    filterData = () => {
+        const { data, searchQuery } = this.state;
+
+        const filteredData = data.filter(item =>
+            item.title.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+
+        this.setState({ filteredData });
+    };
+
+    // 5️⃣ Input change
+    handleSearchChange = (e) => {
+        this.setState({ searchQuery: e.target.value });
+    };
+
+    // 6️⃣ Refresh button
+    handleRefresh = () => {
+        this.fetchData();
+    };
+
+    render() {
+
+        const { filteredData, loading, error, searchQuery } = this.state;
+
+        return (
+            <div className="api-data-fetcher">
+
+                <h1>API Data Fetcher</h1>
+
+                {/* Loading */}
+                {loading && <p>Loading...</p>}
+
+                {/* Error */}
+                {error && <p>{error}</p>}
+
+                {/* Search */}
+                <input
+                    type="text"
+                    placeholder="Search by title"
+                    value={searchQuery}
+                    onChange={this.handleSearchChange}
+                />
+
+                {/* Refresh */}
+                <button onClick={this.handleRefresh}>
+                    Refresh Data
+                </button>
+
+                {/* Table */}
+                {filteredData.length > 0 && (
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Body</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {filteredData.map(item => (
+                                <tr key={item.id}>
+                                    <td>{item.id}</td>
+                                    <td>{item.title}</td>
+                                    <td>{item.body}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
+
+                {/* No Data */}
+                {filteredData.length === 0 && !loading && !error && (
+                    <p>No results found.</p>
+                )}
+
+            </div>
+        );
+    }
+}
+
+
+
+                
+
+const App = () => {
+  return (
+    <div>
+      <ApiDataFetcher />
+    </div>
+  );
+};
+
+
+                
+                console.log('✓ Components defined');
+                console.log('Rendering to DOM...');
+                
+                const rootElement = document.getElementById('root');
+                if (!rootElement) {
+                    throw new Error('Root element not found');
+                }
+                
+                try {
+                    // Try React 18 API first
+                    const root = ReactDOM.createRoot(rootElement);
+                    root.render(React.createElement(App));
+                } catch (e) {
+                    // Fallback to React 16/17 API
+                    console.log('Using legacy render method...');
+                    ReactDOM.render(React.createElement(App), rootElement);
+                }
+                
+                console.log('✓ App rendered successfully');
+            } catch (error) {
+                console.error('DEMO ERROR:', error);
+                const root = document.getElementById('root');
+                if (root) {
+                    root.innerHTML = '<div style="color: red; padding: 30px; font-family: monospace; font-size: 14px; line-height: 1.5;"><h2>Error:</h2><pre>' + (error.stack || error.message) + '</pre></div>';
+                }
+            }
+        }, 500); // Give React 500ms to load
+    </script>
+</body>
+</html>

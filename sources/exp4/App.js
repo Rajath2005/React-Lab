@@ -43,7 +43,7 @@ function TodoFunction() {
             <button onClick={()=>deleteTask(task.id)}>Delete</button>
           </li>
         ))}
-      </ul>-
+      </ul>
 
     </div>
   );

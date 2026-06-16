@@ -88,7 +88,7 @@ li {
                 
                 const React = window.React;
                 const ReactDOM = window.ReactDOM;
-                const { useState, useEffect, useReducer, useContext, useRef, useCallback, useMemo } = React;
+                const { useState, useEffect, useReducer, useContext, useRef, useCallback, useMemo, Component } = React;
                 
                 console.log('✓ React loaded successfully');
                 console.log('Defining components...');
@@ -137,7 +137,7 @@ function TodoFunction() {
             <button onClick={()=>deleteTask(task.id)}>Delete</button>
           </li>
         ))}
-      </ul>-
+      </ul>
 
     </div>
   );

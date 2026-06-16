@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Counter with Step Control - Live Demo</title>
+    <title>Task Reminder with Filtering - Live Demo</title>
     <style>
         * {
             margin: 0;
@@ -27,34 +27,41 @@
             max-width: 100%;
         }
         
-        .App{
-  text-align: center;
-  font-family: Arial,sans-serif;
-}
-button{
-  padding:10px 20px;
-  color:slateblue;
-  background-color:pink;
-  margin:10px;
-  font-size: 1.2rem;
-}
-button:hover{
-  background-color: lightpink;
-  cursor: pointer;
-}
-input{
-  padding:8px;
-  margin: 10px;
-  width:60px;
-}
-h2{
-  text-align: center;
-  padding:10px;
-}
-.Counter-App{
-  margin-top: 10px;
+        body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
 }
 
+div {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+input, textarea, select, button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 8px;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #eee;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
     </style>
 </head>
 <body>
@@ -65,7 +72,7 @@ h2{
     <script src="https://unpkg.com/@babel/standalone@7.23.5/babel.min.js"></script>
     
     <script type="text/babel">
-        console.log('%c=== Counter with Step Control Demo Starting ===', 'color: green; font-size: 14px; font-weight: bold');
+        console.log('%c=== Task Reminder with Filtering Demo Starting ===', 'color: green; font-size: 14px; font-weight: bold');
         
         // Simple synchronous React initialization
         setTimeout(() => {
@@ -92,49 +99,98 @@ h2{
                 console.log('Defining components...');
                 
                 
-                
+// Reminder Component
 
-function App() {
-  const [counter, SetCounter] = useState(0);
-  const [step, SetStep] = useState(1);
-  const minvalue = 0;
 
-  const increment = () => {
-    SetCounter(counter + step);
-  }
-  const decerement = () => {
-    if (counter - step > minvalue) {
-      SetCounter(counter - step);
-    }
-  }
-  const reset = () => {
-    SetCounter(0);
-  }
-  const handleChange = (event) => {
-    const value = Number(event.target.value);
-    SetStep(value);
-  }
+const Reminder = () => {
+  const [tasks, setTasks] = useState([]);
+  const [task, setTask] = useState({ name: "", due: "", desc: "" });
+  const [filter, setFilter] = useState("all");
+
+  // Add Task
+  const addTask = () => {
+    if (!task.name || !task.due) return;
+
+    setTasks([
+      ...tasks,
+      { ...task, id: Date.now(), completed: false }
+    ]);
+
+    setTask({ name: "", due: "", desc: "" });
+  };
+
+  // Toggle Complete
+  const toggleCompletion = (id) => {
+    setTasks(
+      tasks.map(t =>
+        t.id === id ? { ...t, completed: !t.completed } : t
+      )
+    );
+  };
+
+  // Filter
+  const filteredTasks = tasks.filter(t => {
+    if (filter === "completed") return t.completed;
+    if (filter === "pending") return !t.completed;
+    return true;
+  });
+
   return (
-    <div className="App">
-      <h1>Counter Application</h1>
-      <div className='Counter-App'>
-        <h2>{counter}</h2>
-        <div className='Controls'>
-          <button onClick={increment}>Increase</button>
-          <button onClick={decerement}>Decrease</button>
-          <button onClick={reset}>Reset</button>
-          <div className='step-counter'>
-            <label>
-              Step:
-              <input type="number" value={step} onChange={handleChange}></input>
-            </label>
-          </div>
-        </div>
-      </div>
+    <div>
+      <h2>Add Task</h2>
 
+      <input
+        placeholder="Task Name"
+        value={task.name}
+        onChange={e => setTask({ ...task, name: e.target.value })}
+      />
+
+      <input
+        type="date"
+        value={task.due}
+        onChange={e => setTask({ ...task, due: e.target.value })}
+      />
+
+      <textarea
+        placeholder="Description"
+        value={task.desc}
+        onChange={e => setTask({ ...task, desc: e.target.value })}
+      />
+
+      <button onClick={addTask}>Add Task</button>
+
+      <h3>Filter</h3>
+      <select onChange={e => setFilter(e.target.value)}>
+        <option value="all">All</option>
+        <option value="completed">Completed</option>
+        <option value="pending">Pending</option>
+      </select>
+
+      <ul>
+        {filteredTasks.map(t => (
+          <li key={t.id}>
+            <strong>{t.name}</strong> ({t.due})
+            <button onClick={() => toggleCompletion(t.id)}>
+              {t.completed ? "Pending" : "Completed"}
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
-}
+};
+
+
+
+                
+
+const App = () => {
+  return (
+    <div>
+      <Reminder />
+    </div>
+  );
+};
 
 
                 
