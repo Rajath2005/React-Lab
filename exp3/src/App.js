@@ -9,8 +9,10 @@ function App() {
     SetCounter(counter + step);
   }
   const decerement = () => {
-    if (counter - step > minvalue) {
+    if (counter - step >= minvalue) {
       SetCounter(counter - step);
+    } else {
+      SetCounter(minvalue);
     }
   }
   const reset = () => {

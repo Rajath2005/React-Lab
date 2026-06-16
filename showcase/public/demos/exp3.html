@@ -33,13 +33,15 @@
 }
 button{
   padding:10px 20px;
-  color:slateblue;
-  background-color:pink;
+  color:white;
+  background-color:slateblue;
+  border:none;
+  border-radius:4px;
   margin:10px;
   font-size: 1.2rem;
 }
 button:hover{
-  background-color: lightpink;
+  background-color: darkslateblue;
   cursor: pointer;
 }
 input{
@@ -103,8 +105,10 @@ function App() {
     SetCounter(counter + step);
   }
   const decerement = () => {
-    if (counter - step > minvalue) {
+    if (counter - step >= minvalue) {
       SetCounter(counter - step);
+    } else {
+      SetCounter(minvalue);
     }
   }
   const reset = () => {
