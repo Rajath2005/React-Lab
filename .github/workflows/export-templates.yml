@@ -30,12 +30,11 @@ jobs:
         run: node scripts/export-labs.js
 
       - name: Publish to Latest Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: latest
           name: "Latest React Lab Templates"
           files: |
             templates/*.zip
             templates/registry.json
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
