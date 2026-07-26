@@ -1,4 +1,4 @@
-# React Lab - Learning Experiments
+# React Lab - Learning Experiments 
 
 A comprehensive collection of React learning experiments demonstrating fundamental concepts through practical applications. This repository contains 5 progressive experiments that build upon React fundamentals to create interactive, functional components.
 
